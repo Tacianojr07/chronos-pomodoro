@@ -16,6 +16,7 @@
   font-weight: bolder;
   text-decoration: none;
   transition: all 0.1s ease-in-out;
+  color: var(--primary);
 }
 .logoLink:hover {
   filter: brightness(80%);

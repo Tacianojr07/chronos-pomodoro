@@ -1,5 +1,6 @@
 import { Container } from './components/Container';
 import { Logo } from './components/Logo';
+import { Menu } from './components/Menu';
 
 import './Styles/global.css';
 import './Styles/therme.css';
@@ -9,6 +10,10 @@ export function App() {
     <>
       <Container>
         <Logo />
+      </Container>
+
+      <Container>
+        <Menu />
       </Container>
     </>
   );
