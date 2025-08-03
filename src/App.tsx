@@ -2,6 +2,7 @@ import { Container } from './components/Container';
 import { CountDown } from './components/CountDown';
 import { Logo } from './components/Logo';
 import { Menu } from './components/Menu';
+import { DefaultInput } from './components/DefaultInput';
 
 import './Styles/global.css';
 import './Styles/therme.css';
@@ -24,8 +25,13 @@ export function App() {
       <Container>
         <form className='form' action=''>
           <div className='formRow'>
-            <label htmlFor='input'>Task</label>
-            <input id='input' type='text' />
+            <DefaultInput
+              id='taskId'
+              labelText='Task'
+              type='text'
+              placeholder='Digite algo'
+              defaultValue='Valor preenchido'
+            />
           </div>
 
           <div className='formRow'>
