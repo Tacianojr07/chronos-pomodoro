@@ -22,4 +22,5 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 2.4rem;
+  padding: 2rem;
 }

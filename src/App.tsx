@@ -3,6 +3,7 @@ import { CountDown } from './components/CountDown';
 import { Logo } from './components/Logo';
 import { Menu } from './components/Menu';
 import { DefaultInput } from './components/DefaultInput';
+import { Cycle } from './components/Cycle';
 
 import './Styles/global.css';
 import './Styles/therme.css';
@@ -30,7 +31,6 @@ export function App() {
               labelText='Task'
               type='text'
               placeholder='Digite algo'
-              defaultValue='Valor preenchido'
             />
           </div>
 
@@ -39,8 +39,7 @@ export function App() {
           </div>
 
           <div className='formRow'>
-            <p>Ciclos</p>
-            <p>0 0 0 0 0 0</p>
+            <Cycle />
           </div>
 
           <div className='formRow'>
