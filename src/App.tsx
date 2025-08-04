@@ -4,6 +4,9 @@ import { Logo } from './components/Logo';
 import { Menu } from './components/Menu';
 import { DefaultInput } from './components/DefaultInput';
 import { Cycle } from './components/Cycle';
+import { DefaultButton } from './components/DefaultButton';
+
+import { PlayCircleIcon, StopCircleIcon } from 'lucide-react';
 
 import './Styles/global.css';
 import './Styles/therme.css';
@@ -43,7 +46,8 @@ export function App() {
           </div>
 
           <div className='formRow'>
-            <button>Enviar</button>
+            <DefaultButton icon={<PlayCircleIcon />} color='green' />
+            <DefaultButton icon={<StopCircleIcon />} color='red' />
           </div>
         </form>
       </Container>
