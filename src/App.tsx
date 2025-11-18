@@ -5,6 +5,7 @@ import { Menu } from './components/Menu';
 import { DefaultInput } from './components/DefaultInput';
 import { Cycle } from './components/Cycle';
 import { DefaultButton } from './components/DefaultButton';
+import { Footer } from './components/Footer';
 
 import { PlayCircleIcon, StopCircleIcon } from 'lucide-react';
 
@@ -50,6 +51,9 @@ export function App() {
             <DefaultButton icon={<StopCircleIcon />} color='red' />
           </div>
         </form>
+        <Container>
+          <Footer />
+        </Container>
       </Container>
     </>
   );
