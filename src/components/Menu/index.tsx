@@ -6,7 +6,11 @@ import { useState, useEffect } from 'react';
 type AvailableTherme = 'dark' | 'light';
 
 export function Menu() {
-  const [therme, setTherme] = useState<AvailableTherme>('dark');
+  const [therme, setTherme] = useState<AvailableTherme>(() => {
+    const storageTherme =
+      (localStorage.getItem('therme') as AvailableTherme) || 'dark';
+    return storageTherme;
+  });
 
   function handleThermeChange(
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -23,6 +27,8 @@ export function Menu() {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', therme);
 
+    localStorage.setItem('therme', therme);
+
     return () => {
       console.log('parando component');
     };
@@ -30,7 +36,6 @@ export function Menu() {
 
   return (
     <nav className={styles.menu}>
-      <h1>{therme}</h1>
       <a
         className={styles.menuLink}
         href='#'
