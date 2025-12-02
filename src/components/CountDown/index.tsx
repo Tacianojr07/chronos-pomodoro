@@ -1,9 +1,9 @@
+import { useTaskContext } from '../../context/TaskContext';
 import styles from './styles.module.css';
 
 export function CountDown() {
-  return (
-    <div className={styles.container}>
-      <p>00:00</p>
-    </div>
-  );
+  const TaskContext = useTaskContext();
+  console.log(TaskContext);
+
+  return <div className={styles.container}>00:00</div>;
 }
