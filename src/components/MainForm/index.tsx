@@ -6,11 +6,13 @@ import { useEffect, useRef } from 'react';
 import type { TaskModel } from '../../models/TaskModel';
 import { useTaskContext } from '../../context/TaskContext/useTasksContext';
 import { getNextCycle } from '../../utils/getNextCycle';
+import { getNextCycleType } from '../../utils/getNextCycleType';
 
 export function MainForm() {
   const { setState, state } = useTaskContext();
 
   const nextCycle = getNextCycle(state.currentCycle);
+  const nextCycleType = getNextCycleType(nextCycle);
 
   useEffect(() => {
     console.log(state);
@@ -22,7 +24,7 @@ export function MainForm() {
     event.preventDefault();
     if (!taskNameInput.current) return;
 
-    const taskName = taskNameInput.current.value.trim() ?? '';
+    const taskName = taskNameInput.current.value.trim();
 
     if (!taskName) {
       alert('digite o nome da tarefa');
@@ -36,7 +38,7 @@ export function MainForm() {
       completeDate: null,
       interruptDate: null,
       duration: 1,
-      type: 'workTime',
+      type: nextCycleType,
     };
 
     const secondsRemaining = newTask.duration * 60;
@@ -48,7 +50,7 @@ export function MainForm() {
         currentCycle: nextCycle,
         secondsRemaining: secondsRemaining,
         formattedSecondsRemaining: '00:00',
-        tasks: [...prevState.tasks],
+        tasks: [...prevState.tasks, newTask],
       };
     });
   }
