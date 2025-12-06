@@ -70,9 +70,11 @@ export function MainForm() {
         <p>Lorem ipsum dolor sit amet.</p>
       </div>
 
-      <div className='formRow'>
-        <Cycle />
-      </div>
+      {state.currentCycle > 0 && (
+        <div className='formRow'>
+          <Cycle />
+        </div>
+      )}
 
       <div className='formRow'>
         <DefaultButton icon={<PlayCircleIcon />} color='green' />

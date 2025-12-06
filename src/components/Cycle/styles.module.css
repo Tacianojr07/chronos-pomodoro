@@ -16,6 +16,7 @@
   height: 2rem;
   background-color: var(--primary);
   border-radius: 50%;
+  display: inline-block;
 }
 
 .workTime {
