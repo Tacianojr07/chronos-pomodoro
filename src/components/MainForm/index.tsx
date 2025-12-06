@@ -5,9 +5,12 @@ import { DefaultInput } from '../DefaultInput';
 import { useEffect, useRef } from 'react';
 import type { TaskModel } from '../../models/TaskModel';
 import { useTaskContext } from '../../context/TaskContext/useTasksContext';
+import { getNextCycle } from '../../utils/getNextCycle';
 
 export function MainForm() {
   const { setState, state } = useTaskContext();
+
+  const nextCycle = getNextCycle(state.currentCycle);
 
   useEffect(() => {
     console.log(state);
@@ -42,9 +45,9 @@ export function MainForm() {
       return {
         ...prevState,
         activeTask: newTask,
-        currentCycle: 1,
+        currentCycle: nextCycle,
         secondsRemaining: secondsRemaining,
-        formattedSecondsRemaining: '',
+        formattedSecondsRemaining: '00:00',
         tasks: [...prevState.tasks],
       };
     });
