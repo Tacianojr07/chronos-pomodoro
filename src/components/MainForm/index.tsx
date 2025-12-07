@@ -56,16 +56,19 @@ export function MainForm() {
     });
   }
 
-  function handleInterruptTask(
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) {
-    e.preventDefault();
+  function handleInterruptTask() {
     setState(prevState => {
       return {
         ...prevState,
         activeTask: null,
         secondsRemaining: 0,
         formattedSecondsRemaining: '00:00',
+        tasks: prevState.tasks.map(task => {
+          if (prevState.activeTask && prevState.activeTask.id === task.id) {
+            return { ...task, interruptDate: Date.now() };
+          }
+          return task;
+        }),
       };
     });
   }
@@ -93,14 +96,16 @@ export function MainForm() {
       )}
 
       <div className='formRow'>
-        {!state.activeTask ? (
+        {!state.activeTask && (
           <DefaultButton
             aria-label='Iniciar nova tarefa'
             title='Iniciar nova tarefa'
             icon={<PlayCircleIcon />}
             color='green'
+            key={'submit'}
           />
-        ) : (
+        )}{' '}
+        {!!state.activeTask && (
           <DefaultButton
             type='button'
             onClick={handleInterruptTask}
@@ -108,6 +113,7 @@ export function MainForm() {
             title='Interromper  tarefa'
             icon={<StopCircleIcon />}
             color='red'
+            key={'button'}
           />
         )}
       </div>
